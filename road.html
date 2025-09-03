@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rory's Travel Map</title>
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet/dist/leaflet.css"
+  />
+  <style>
+    body, html { margin: 0; padding: 0; height: 100%; }
+    #title-container { padding: 10px; background: #fff; }
+    #map { width: 100%; height: calc(100% - 50px); }
+    #title-input {
+      width: 100%;
+      max-width: 600px;
+      font-size: 1.5em;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="title-container">
+    <input
+      type="text"
+      id="title-input"
+      placeholder="Enter map title here"
+    />
+  </div>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- Leaflet Omnivore for KML support -->
+  <script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
+  <script>
+    // Initialize the map
+    const map = L.map('map').setView([0, 0], 2);
+
+    // Create your custom pane for KML so it always draws above tiles
+    map.createPane('kmlPane');
+    map.getPane('kmlPane').style.zIndex = 650;
+
+    // Add the Mapbox base layer into the default 'tilePane'
+    L.tileLayer(
+      'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoicm9yeTRzeXRoZWxkZXIiLCJhIjoiY205MXV2eXh1MDUxejJqb2VyOXlqcHduMSJ9.jayP103_JPGAKudstFC6Zw',
+      {
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        attribution: '© <a href="https://www.mapbox.com/">Mapbox</a>'
+      }
+    ).addTo(map);
+
+    // Your list of KML files
+    const kmlFiles = [
+      'Travels103.kml',
+      'Travels200.kml',
+      'Travels300.kml',
+      'Travels400.kml',
+      'Travels500.kml',
+      'Travels600.kml',
+      'Travels700.kml',
+      'Travels800.kml',
+      'Travels900.kml',
+      'Travels1001.kml',
+      'Travels1100.kml',
+      'Travels1200.kml',
+      'Travels1302.kml',
+      'Travels1400.kml',
+      'Travels1500.kml',
+      'Travels1600.kml',
+      'Travels1701.kml',
+      'Travels1800.kml',
+      'Travels1903.kml',
+      'Travels2000.kml',
+      'Travels2100.kml',
+      'Travels2200.kml',
+      'Travels2300.kml',
+      'Travels2400.kml',
+      'Travels2500.kml',
+      'Travels2600.kml',
+      // … up to 25
+    ];
+
+    // Load each KML into the custom pane with a visible style
+    kmlFiles.forEach(kmlUrl => {
+      omnivore
+        .kml(kmlUrl, {
+          pane: 'kmlPane',
+          // Optional: give your lines a default style if KML doesn’t specify one
+          style: {
+            color: '#ff0000',
+            weight: 3
+          }
+        })
+        .on('ready', function() {
+          // Zoom to the extent of this layer
+          map.fitBounds(this.getBounds());
+        })
+        .on('error', function(err){
+          console.error('Failed to load KML:', kmlUrl, err);
+        })
+        .addTo(map);
+    });
+
+    // Map title updater
+    document.getElementById('title-input').addEventListener('input', function() {
+      document.title = this.value || 'Mapbox KML Road Tracker';
+    });
+  </script>
+</body>
+</html>
