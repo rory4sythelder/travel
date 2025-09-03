@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rory's Road Map</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #title-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    #title-input {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    /* Add padding so content isn't hidden under the fixed header */
+    #spacer {
+      height: 70px;
+      width: 100%;
+    }
+
+    #image-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #image-container img {
+      max-width: 90%;
+      height: auto;
+      border: 4px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    #lists-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 90%;
+      max-width: 1200px;
+      margin-bottom: 40px;
+    }
+
+    .list-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px 20px;
+    }
+
+    .list-box h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .list-box ul {
+      list-style-type: disc;
+      padding-left: 20px;
+      margin: 10px 0 0 0;
+    }
+
+    .list-box li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="title-container">
+    <h1 id="title-input">Rory's Road Map</h1>
+  </div>
+
+  <!-- Spacer so content doesn't overlap fixed title -->
+  <div id="spacer"></div>
+
+  <div id="image-container">
+    <img src="Rory_s_County_MapUpdatedAugust2025noYears.png" alt="Rory's County Map">
+  </div>
+
+  <div id="lists-container">
+    <div class="list-box">
+      <h3>List Title 1</h3>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li>
+      </ul>
+    </div>
+    <div class="list-box">
+      <h3>List Title 2</h3>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li>
+      </ul>
+    </div>
+    <div class="list-box">
+      <h3>List Title 3</h3>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li>
+      </ul>
+    </div>
+    <div class="list-box">
+      <h3>List Title 4</h3>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li>
+      </ul>
+    </div>
+    <div class="list-box">
+      <h3>List Title 5</h3>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li>
+      </ul>
+    </div>
+    <div class="list-box">
+      <h3>List Title 6</h3>
+      <ul>
+        <li>Item 1</li><li>Item 2</li><li>Item 3</li><li>Item 4</li><li>Item 5</li>
+        <li>Item 6</li><li>Item 7</li><li>Item 8</li><li>Item 9</li><li>Item 10</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
