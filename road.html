@@ -9,25 +9,22 @@
     rel="stylesheet"
     href="https://unpkg.com/leaflet/dist/leaflet.css"
   />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <style>
     body, html { margin: 0; padding: 0; height: 100%; }
     #title-container { padding: 10px; background: #fff; }
     #map { width: 100%; height: calc(100% - 50px); }
     #title-input {
-      width: 100%;
-      max-width: 600px;
-      font-size: 1.5em;
-      padding: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8em;
+      margin: 0;
     }
   </style>
 </head>
 <body>
   <div id="title-container">
-    <input
-      type="text"
-      id="title-input"
-      placeholder="Enter map title here"
-    />
+    <h1 id="title-input">Rory's Road Map</h1>
   </div>
   <div id="map"></div>
 
@@ -104,11 +101,6 @@
           console.error('Failed to load KML:', kmlUrl, err);
         })
         .addTo(map);
-    });
-
-    // Map title updater
-    document.getElementById('title-input').addEventListener('input', function() {
-      document.title = this.value || 'Mapbox KML Road Tracker';
     });
   </script>
 </body>
