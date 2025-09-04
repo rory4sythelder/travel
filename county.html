@@ -15,6 +15,8 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      margin-bottom: 40px; /* 👈 adds space at the bottom */
+      margin-top: 20px;
     }
 
     #title-container {
@@ -34,7 +36,7 @@
       margin: 0;
     }
 
-    /* Add padding so content isn't hidden under the fixed header */
+    /* Spacer so content isn't hidden under fixed header */
     #spacer {
       height: 70px;
       width: 100%;
@@ -58,33 +60,54 @@
     #lists-container {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 20px;
+      gap: 20px; /* uniform spacing */
       width: 90%;
       max-width: 1200px;
-      margin-bottom: 40px;
     }
 
-    .list-box {
+    .list-box, .wide-box {
       background: #fff;
       border-radius: 12px;
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
       padding: 15px 20px;
+      text-align: left;
     }
 
-    .list-box h3 {
+    .list-box h3, .wide-box h3 {
       margin-top: 0;
       font-size: 1.2em;
       font-weight: bold;
+      text-align: left;
+      white-space: nowrap;       /* 👈 keep on one line */
+      overflow: hidden;          /* 👈 prevent wrapping */
+      text-overflow: ellipsis;   /* 👈 add "..." if too long */
     }
 
-    .list-box ul {
-      list-style-type: disc;
+    .list-box ol {
       padding-left: 20px;
       margin: 10px 0 0 0;
     }
 
     .list-box li {
       margin-bottom: 5px;
+      font-size: 0.95em;
+    }
+
+    .wide-box {
+      grid-column: span 2; /* spans both columns */
+    }
+
+    .wide-box p {
+      margin: 8px 0 0 0;
+      font-size: 0.95em;
+    }
+
+    .highlight {
+      color: blue;
+      border: 2px solid black;   /* thin black outline */
+      border-radius: 6px;        /* rounded corners */
+      padding: 2px 6px;          /* space inside */
+      display: inline-block;
     }
   </style>
 </head>
@@ -93,7 +116,6 @@
     <h1 id="title-input">Rory's Travels // County Map</h1>
   </div>
 
-  <!-- Spacer so content doesn't overlap fixed title -->
   <div id="spacer"></div>
 
   <div id="image-container">
@@ -101,47 +123,112 @@
   </div>
 
   <div id="lists-container">
+    <!-- Wide box ABOVE -->
+    <div class="wide-box">
+      <h3>How many American counties has Rory visited?</h3>
+      <p>Rory has visited <span class="highlight">675</span> counties as of <span class="highlight">September 3, 2025</span>.</p>
+    </div>
+
     <div class="list-box">
       <h3>States by Total Counties Visited</h3>
-      <ul>
-        <li>1. California: 57</li><li>2. Ohio: 36</li><li>3. Oregon: 32</li><li>T-4. Colorado: 31</li><li>T-4. Kansas: 31</li>
-        <li>6. Montana: 26</li><li>7. Illinois: 23</li><li>8. Minnesota: 21</li><li>T-9. North Dakota: 19</li><li>T-9. Missouri: 19</li>
-      </ul>
+      <ol>
+        <li>California: 57</li>
+        <li>Ohio: 36</li>
+        <li>Oregon: 32</li>
+        <li>Colorado: 31</li>
+        <li>Kansas: 31</li>
+        <li>Montana: 26</li>
+        <li>Illinois: 23</li>
+        <li>Minnesota: 21</li>
+        <li>North Dakota: 19</li>
+        <li>Missouri: 19</li>
+      </ol>
     </div>
+
     <div class="list-box">
       <h3>States by Percentage of Counties Visited</h3>
-      <ul>
-        <li>1. California: 98.3%</li><li>2. Oregon: 88.9%</li><li>3. Nevada: 88.2%</li><li>4. Rhode Island: 60.0%</li><li>5. New Jersey: 57.1%</li>
-        <li>6. Utah: 55.2%</li><li>7. Colorado: 48.4%</li><li>8. Arizona: 46.7%</li><li>9. Montana: 46.4%</li><li>10. Washington: 43.6%</li>
-      </ul>
+      <ol>
+        <li>California: 98.3%</li>
+        <li>Oregon: 88.9%</li>
+        <li>Nevada: 88.2%</li>
+        <li>Rhode Island: 60.0%</li>
+        <li>New Jersey: 57.1%</li>
+        <li>Utah: 55.2%</li>
+        <li>Colorado: 48.4%</li>
+        <li>Arizona: 46.7%</li>
+        <li>Montana: 46.4%</li>
+        <li>Washington: 43.6%</li>
+      </ol>
     </div>
+
     <div class="list-box">
       <h3>States by Least Counties Yet to Visit</h3>
-      <ul>
-        <li>1. California: 1</li><li>T-2. Nevada: 2</li><li>T-2. Delaware: 2</li><li>T-2. Rhode Island: 2</li><li>5. Oregon: 4</li>
-        <li>6. Hawaii: 5</li><li>7. Connecticut: 7</li><li>8. Arizona: 8</li><li>9. New Jersey: 9</li><li>T-10. Massachusetts: 10</li><li>T-10. New Hampshire: 10</li>
-      </ul>
+      <ol>
+        <li>California: 1</li>
+        <li>Nevada: 2</li>
+        <li>Delaware: 2</li>
+        <li>Rhode Island: 2</li>
+        <li>Oregon: 4</li>
+        <li>Hawaii: 5</li>
+        <li>Connecticut: 7</li>
+        <li>Arizona: 8</li>
+        <li>New Jersey: 9</li>
+        <li>Massachusetts: 10</li>
+      </ol>
     </div>
+
     <div class="list-box">
       <h3>States by Most Counties Yet to Visit</h3>
-      <ul>
-        <li>1. Texas: 245</li><li>2. Georgia: 152</li><li>3. Virginia: 116</li><li>4. Kentucky: 104</li><li>5. Missouri: 96</li>
-        <li>6. North Carolina: 92</li><li>7. Tennessee: 89</li><li>8. Iowa: 84</li><li>9. Nebraska: 83</li><li>10. Illinois: 79</li>
-      </ul>
+      <ol>
+        <li>Texas: 245</li>
+        <li>Georgia: 152</li>
+        <li>Virginia: 116</li>
+        <li>Kentucky: 104</li>
+        <li>Missouri: 96</li>
+        <li>North Carolina: 92</li>
+        <li>Tennessee: 89</li>
+        <li>Iowa: 84</li>
+        <li>Nebraska: 83</li>
+        <li>Illinois: 79</li>
+      </ol>
     </div>
+
     <div class="list-box">
       <h3>Largest Counties by Population Yet to Visit (2020 Census)</h3>
-      <ul>
-        <li>1. Harris, Texas: 4.73 million (#3 largest in nation)</li><li>2. Philadelphia, Pennsylvania: 1.60 million (#23 in nation) </li><li>3. Suffolk, New York: 1.53 million (#25 in nation)</li><li>4. Bronx, New York: 1.47 million (#27 in nation)</li><li>5. Hillsborough, Florida: 1.46 million (#28 in nation)</li>
-        <li>6.  Nassau, New York: 1.40 million (#30 in nation)</li><li>7. Oakland, Michigan: 1.27 million (#34 in nation)</li><li>8. Allegheny, Pennsylvania: 1.25 million (#36 in nation)</li><li>9. Fairfax, Virginia: 1.15 million (#30 in nation)</li><li>10. Wake, North Carolina: 1.13 million (#40 in nation)</li>
-      </ul>
+      <ol>
+        <li>Harris, Texas: 4.73 million (#3 largest in nation)</li>
+        <li>Philadelphia, PA: 1.60 million (#23)</li>
+        <li>Suffolk, NY: 1.53 million (#25)</li>
+        <li>Bronx, NY: 1.47 million (#27)</li>
+        <li>Hillsborough, FL: 1.46 million (#28)</li>
+        <li>Nassau, NY: 1.40 million (#30)</li>
+        <li>Oakland, MI: 1.27 million (#34)</li>
+        <li>Allegheny, PA: 1.25 million (#36)</li>
+        <li>Fairfax, VA: 1.15 million (#39)</li>
+        <li>Wake, NC: 1.13 million (#40)</li>
+      </ol>
     </div>
+
     <div class="list-box">
       <h3>Smallest Counties by Population Visited (2020 Census)</h3>
-      <ul>
-        <li>1. Esmerelda, Nevada: 729 (#35 smallest in nation)</li><li>2. Jones, South Dakota: 917 (#49 in nation)</li><li>3. Billings, North Dakota: 945 (#52 in nation)</li><li>4. Carter, Montana: 1,415 (#73 in nation)</li><li>5. Powder River, Montana: 1,694 (#91 in nation)</li>
-        <li>6. Golden Valley, North Dakota: 1,736 (#95 in nation)</li><li>7. Oldham, Texas: 1,758 (#96 in nation)</li><li>8. Deuel, Nebraska: 1,838 (#103 in nation)</li><li>9. Sherman, Oregon: 1,870 (#106 in nation)</li><li>10. Liberty, Montana: 1,959 (#115 in nation)</li>
-      </ul>
+      <ol>
+        <li>Esmerelda, NV: 729 (#35 smallest in nation)</li>
+        <li>Jones, SD: 917 (#49)</li>
+        <li>Billings, ND: 945 (#52)</li>
+        <li>Carter, MT: 1,415 (#73)</li>
+        <li>Powder River, MT: 1,694 (#91)</li>
+        <li>Golden Valley, ND: 1,736 (#95)</li>
+        <li>Oldham, TX: 1,758 (#96)</li>
+        <li>Deuel, NE: 1,838 (#103)</li>
+        <li>Sherman, OR: 1,870 (#106)</li>
+        <li>Liberty, MT: 1,959 (#115)</li>
+      </ol>
+    </div>
+
+    <!-- Wide box BELOW -->
+    <div class="wide-box">
+      <h3>Wide Box Title</h3>
+      <p>Sample placeholder text with bold numbers: <b>11</b>, <b>22</b>, <b>33</b>, <b>44</b>, <b>55</b>.</p>
     </div>
   </div>
 </body>
