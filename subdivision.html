@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>World Subdivision Map // Rory's Travels</title>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f9f9f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 40px; /* 👈 adds space at the bottom */
+      margin-top: 20px;
+    }
+
+    #title-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: #fff;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    #title-input {
+      font-size: 1.8em;
+      margin: 0;
+    }
+
+    /* Spacer so content isn't hidden under fixed header */
+    #spacer {
+      height: 70px;
+      width: 100%;
+    }
+
+    #image-container {
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    #image-container img {
+      max-width: 90%;
+      height: auto;
+      border: 4px solid #333;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2)
+    }
+
+    #lists-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px; /* uniform spacing */
+      width: 90%;
+      max-width: 1200px;
+    }
+
+    .list-box, .wide-box {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      padding: 15px 20px;
+      text-align: left;
+    }
+
+    .list-box h3, .wide-box h3 {
+      margin-top: 0;
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: left;
+      white-space: nowrap;       /* 👈 keep on one line */
+      overflow: hidden;          /* 👈 prevent wrapping */
+      text-overflow: ellipsis;   /* 👈 add "..." if too long */
+    }
+
+    .list-box ol {
+      padding-left: 20px;
+      margin: 10px 0 0 0;
+    }
+
+    .list-box li {
+      margin-bottom: 5px;
+      font-size: 0.95em;
+    }
+
+    .wide-box {
+      grid-column: span 2; /* spans both columns */
+    }
+
+    .wide-box p {
+      margin: 8px 0 0 0;
+      font-size: 0.95em;
+    }
+
+    .highlight {
+      color: blue;
+      border: 2px solid black;   /* thin black outline */
+      border-radius: 6px;        /* rounded corners */
+      padding: 2px 6px;          /* space inside */
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div id="title-container">
+    <h1 id="title-input">Rory's Travels // World Subdivision Map</h1>
+  </div>
+
+  <div id="spacer"></div>
+
+  <div id="image-container">
+    <img src="Rory_s_World_Subdivision_Map.png" alt="Rory's World Subdivisions Map">
+  </div>
+
+  <div id="lists-container">
+    <!-- Wide box ABOVE -->
+    <div class="wide-box">
+      <h3>How many world subdivisions has Rory visited?</h3>
+      <p>Rory has visited <span class="highlight">123</span> primary national subdivisions (states, provinces, departments and other equivalents) as of <span class="highlight">September 24, 2025</span>, out of roughly 3,823 around the world. That's <span class="highlight">3.2%</span>!</p>
+    </div>
+
+    <div class="list-box">
+      <h3>Nations by Total Subdivisions Visited</h3>
+      <ol>
+        <li>United States: 47/51</li>
+        <li>Mexico: 4/32</li>
+        <li>Canada: 1/13</li>
+        <li>Belize: 4/6</li>
+        <li>Netherlands: 1/13</li>
+        <li>Peru: 2/26</li>
+        <li>China: 1/31</li>
+        <li>Hong Kong: 1/18</li>
+        <li>Switzerland: 6/26</li>
+        <li>Italy: 9/20 . Germany 9/16 . Ireland 15/29 . UK  6/189  . Austria: 1/9 . Vietnam 8/34 . Guatemala 8/22 . Laos 1/17 . Vatican City 1/1 </li>
+      </ol>
+    </div>
+
+    <div class="list-box">
+      <h3>Nations by Percentage of Subdivisions Visited</h3>
+      <ol>
+        <li>United States: 92.2%</li>
+        <li>Belize: 66.6%</li>
+        <li>Germany: 56.3%</li>
+        <li>Ireland: 51.7%</li>
+        <li>Italy: 45.0%</li>
+        <li>Guatemala: 36.3%</li>
+        <li>Vietnam: 23.6%</li>
+        <li>Switzerland: 23.1%</li>
+        <li>Mexico City: 12.5%</li>
+        <li>Austria: 11.1%</li>
+      </ol>
+    </div>
+
+    <div class="list-box">
+      <h3>Nations by Least Subdivisions Yet to Visit</h3>
+      <ol>
+        <li>Belize: 2</li>
+        <li>United States: 4</li>
+        <li>Germany: 7</li>
+        <li>Austria: 8</li>
+        <li>Italy: 11</li>
+        <li>Canada: 12</li>
+        <li>Netherlands: 12</li>
+        <li>Ireland: 14</li>
+        <li>Guatemala: 14</li>
+        <li>Laos: 16</li>
+      </ol>
+    </div>
+
+    <div class="list-box">
+      <h3>Nations by Most Subdivisions Yet to Visit</h3>
+      <ol>
+        <li>Texas: 245</li>
+        <li>Georgia: 152</li>
+        <li>Virginia: 116</li>
+        <li>Kentucky: 104</li>
+        <li>Missouri: 96</li>
+        <li>North Carolina: 92</li>
+        <li>Tennessee: 89</li>
+        <li>Iowa: 84</li>
+        <li>Nebraska: 83</li>
+        <li>Illinois: 79</li>
+      </ol>
+    </div>
+
+    <div class="list-box">
+      <h3>Largest Subdivisions by Population Yet to Visit (2020 Census)</h3>
+      <ol>
+        <li>Harris, Texas: 4.73 million (#3 largest in nation)</li>
+        <li>Philadelphia, PA: 1.60 million (#23)</li>
+        <li>Suffolk, NY: 1.53 million (#25)</li>
+        <li>Bronx, NY: 1.47 million (#27)</li>
+        <li>Hillsborough, FL: 1.46 million (#28)</li>
+        <li>Nassau, NY: 1.40 million (#30)</li>
+        <li>Oakland, MI: 1.27 million (#34)</li>
+        <li>Allegheny, PA: 1.25 million (#36)</li>
+        <li>Fairfax, VA: 1.15 million (#39)</li>
+        <li>Wake, NC: 1.13 million (#40)</li>
+      </ol>
+    </div>
+
+    <div class="list-box">
+      <h3>Smallest Subdivisions by Population Visited</h3>
+      <ol>
+        <li>Esmerelda, NV: 729 (#35 smallest in nation)</li>
+        <li>Jones, SD: 917 (#49)</li>
+        <li>Billings, ND: 945 (#52)</li>
+        <li>Carter, MT: 1,415 (#73)</li>
+        <li>Powder River, MT: 1,694 (#91)</li>
+        <li>Golden Valley, ND: 1,736 (#95)</li>
+        <li>Oldham, TX: 1,758 (#96)</li>
+        <li>Deuel, NE: 1,838 (#103)</li>
+        <li>Sherman, OR: 1,870 (#106)</li>
+        <li>Liberty, MT: 1,959 (#115)</li>
+      </ol>
+    </div>
+
+    <!-- Wide box BELOW -->
+    <div class="wide-box">
+      <h3>Goal Counties</h3>
+      <p>Nevada: White Pine and Lincoln</p>
+      <p>California: Alpine</p>
+      <p>Oregon: Wallowa, Crook, Wheeler, and Grant</p>
+      <p>Washington: Wahkiakum</p> 
+      <p>Arizona: La Paz</p> 
+      <p>Utah: Sanpete and Juab</p> 
+      <p>Idaho: Owyhee and Twin Falls</p> 
+      <p>Wisconsin: Walworth, Pierce, Pepin, and Buffalo</p>
+      <p>Kansas: Morris</p>  
+      <p>Montana: Treasure</p>
+      <p>Florida: Brevard</p>  
+      <p>Rhode Island: Bristol and Newport</p> 
+      <p>Hawaii: Kalawao</p> 
+    </div>
+  </div>
+</body>
+</html>
