@@ -129,7 +129,7 @@
             const bounds = allKmlLayers.getBounds();
             map.fitBounds(bounds, { padding: [20, 20] });
             // Lock map panning to bounds of data
-            map.setMaxBounds(bounds.pad(0.5)); // pad adds a little breathing room
+            map.setMaxBounds(bounds.pad(0.3)); // pad adds a little breathing room
           } catch (e) {
             console.warn('fitBounds failed:', e);
           }
