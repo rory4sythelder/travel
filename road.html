@@ -51,7 +51,7 @@
     // Initialize the map with zoom limits
     const map = L.map('map', {
     minZoom: 2,   // don't let user zoom out past world-ish
-    maxZoom: 12   // adjust higher/lower depending on detail of your tiles/data
+    maxZoom: 6   // adjust higher/lower depending on detail of your tiles/data
     }).setView([0, 0], 2);
 
 
@@ -129,7 +129,7 @@
             const bounds = allKmlLayers.getBounds();
             map.fitBounds(bounds, { padding: [20, 20] });
             // Lock map panning to bounds of data
-            map.setMaxBounds(bounds.pad(0.1)); // pad adds a little breathing room
+            map.setMaxBounds(bounds.pad(0.5)); // pad adds a little breathing room
           } catch (e) {
             console.warn('fitBounds failed:', e);
           }
