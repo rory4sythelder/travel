@@ -21,10 +21,6 @@
       margin: 0;
       text-align: center;
     }
-
-    }
-
-    }
     /* Loading overlay */
     #loading-overlay {
       position: fixed;
@@ -59,7 +55,7 @@
     map.createPane('kmlPane');
     map.getPane('kmlPane').style.zIndex = 650;
 
-    // Add the Mapbox base layer into the default 'tilePane'
+    // Add the Mapbox base layer
     L.tileLayer(
       'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoicm9yeTRzeXRoZWxkZXIiLCJhIjoiY205MXV2eXh1MDUxejJqb2VyOXlqcHduMSJ9.jayP103_JPGAKudstFC6Zw',
       {
@@ -98,25 +94,19 @@
       'Travels2400.kml',
       'Travels2501.kml',
       'Travels2600.kml',
-      // … up to 25
     ];
 
-    // Group to hold all KML layers (do NOT add to map yet)
     const allKmlLayers = L.featureGroup();
-
     let completed = 0;
 
     kmlFiles.forEach((kmlUrl) => {
-      // Build the target GeoJSON layer with pane + style
       const targetLayer = L.geoJson(null, {
         pane: 'kmlPane',
         style: { color: '#ff0000', weight: 3 }
       });
 
-      // Correct omnivore usage: (url, null, targetLayer)
       omnivore.kml(kmlUrl, null, targetLayer)
         .on('ready', function () {
-          // Collect into the master group but don't show yet
           allKmlLayers.addLayer(targetLayer);
           onFileDone();
         })
@@ -129,16 +119,17 @@
     function onFileDone() {
       completed++;
       if (completed === kmlFiles.length) {
-        // After all have attempted loading, add to map once
         if (allKmlLayers.getLayers().length > 0) {
           allKmlLayers.addTo(map);
           try {
-            map.fitBounds(allKmlLayers.getBounds(), { padding: [20, 20] });
+            const bounds = allKmlLayers.getBounds();
+            map.fitBounds(bounds, { padding: [20, 20] });
+            // Lock map panning to bounds of data
+            map.setMaxBounds(bounds.pad(0.1)); // pad adds a little breathing room
           } catch (e) {
             console.warn('fitBounds failed:', e);
           }
         }
-        // Hide loading overlay
         document.getElementById('loading-overlay').style.display = 'none';
       }
     }
