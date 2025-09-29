@@ -48,8 +48,12 @@
   <!-- Leaflet Omnivore for KML support -->
   <script src="https://unpkg.com/leaflet-omnivore@0.3.4/leaflet-omnivore.min.js"></script>
   <script>
-    // Initialize the map
-    const map = L.map('map').setView([0, 0], 2);
+    // Initialize the map with zoom limits
+    const map = L.map('map', {
+    minZoom: 2,   // don't let user zoom out past world-ish
+    maxZoom: 12   // adjust higher/lower depending on detail of your tiles/data
+    }).setView([0, 0], 2);
+
 
     // Create your custom pane for KML so it always draws above tiles
     map.createPane('kmlPane');
